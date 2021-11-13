@@ -23,7 +23,6 @@ def play_game():
     game_surface = pygame.display.set_mode((WIDTH, HEIGHT))
     clock = pygame.time.Clock()
     snake = Snake(game_surface)
-
     mainloop = True
     while mainloop:
         draw_screen(game_surface)

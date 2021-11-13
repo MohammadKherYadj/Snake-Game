@@ -21,30 +21,30 @@ class Square:
 
         if self.dir == [-1, 0]:
             if self.is_tail:
-                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2*gs, ss - 2*gs))
+                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2 * gs, ss - 2 * gs))
             else:
-                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss, ss - 2*gs))
+                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss, ss - 2 * gs))
 
         if self.dir == [1, 0]:
             if self.is_tail:
-                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2*gs, ss - 2*gs))
+                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2 * gs, ss - 2 * gs))
             else:
-                pygame.draw.rect(self.surface, clr, (x * ss - gs, y * ss + gs, ss, ss - 2*gs))
+                pygame.draw.rect(self.surface, clr, (x * ss - gs, y * ss + gs, ss, ss - 2 * gs))
 
         if self.dir == [0, 1]:
             if self.is_tail:
-                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2*gs, ss - 2*gs))
+                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2 * gs, ss - 2 * gs))
             else:
-                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss - gs, ss - 2*gs, ss))
+                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss - gs, ss - 2 * gs, ss))
 
         if self.dir == [0, -1]:
             if self.is_tail:
-                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2*gs, ss - 2*gs))
+                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2 * gs, ss - 2 * gs))
             else:
-                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2*gs, ss))
+                pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2 * gs, ss))
 
         if self.is_apple:
-            pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2*gs, ss - 2*gs))
+            pygame.draw.rect(self.surface, clr, (x * ss + gs, y * ss + gs, ss - 2 * gs, ss - 2 * gs))
 
     def move(self, direction):
         self.dir = direction
@@ -324,13 +324,12 @@ class Snake:
             return path_1  # Choose BFS path to apple (Fastest and shortest path)
 
         # If path_1 or path_2 not available, test these 3 conditions:
-            # 1- Make sure that the longest path to tail is available
-            # 2- If score is even, choose longest_path_to_tail() to follow the tail, if odd use any_safe_move()
-            # 3- Change the follow tail method if the snake gets stuck in a loop
-        if self.longest_path_to_tail() and\
-                self.score % 2 == 0 and\
+        # 1- Make sure that the longest path to tail is available
+        # 2- If score is even, choose longest_path_to_tail() to follow the tail, if odd use any_safe_move()
+        # 3- Change the follow tail method if the snake gets stuck in a loop
+        if self.longest_path_to_tail() and \
+                self.score % 2 == 0 and \
                 self.moves_without_eating < MAX_MOVES_WITHOUT_EATING / 2:
-
             # Choose longest path to tail
             return self.longest_path_to_tail()
 
